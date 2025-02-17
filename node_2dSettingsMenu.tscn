@@ -1,0 +1,107 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3e1y8q2agrcv"]
+
+[ext_resource type="Texture2D" uid="uid://b64g6hoextnxk" path="res://asteroid-Psyche.jpg" id="1_ukxvq"]
+[ext_resource type="Script" path="res://brightness_h_slider.gd" id="2_5xyvr"]
+
+[sub_resource type="SystemFont" id="SystemFont_rtru1"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="SystemFont" id="SystemFont_sfrg8"]
+font_names = PackedStringArray("Impact")
+
+[node name="Node2DSettingsMenu" type="Node2D"]
+
+[node name="Main_Menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Main_Menu"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 1.0
+offset_right = 2872.0
+offset_bottom = 1613.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_ukxvq")
+
+[node name="MarginContainer" type="MarginContainer" parent="Main_Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 4.0
+offset_right = 1149.0
+offset_bottom = 643.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main_Menu/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Seperator" type="Control" parent="Main_Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Main_Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 24
+theme_override_fonts/font = SubResource("SystemFont_rtru1")
+theme_override_font_sizes/font_size = 64
+text = "Settings Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main_Menu/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Control" type="Control" parent="Main_Menu/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="BrightnessHSlider" type="HSlider" parent="Main_Menu/MarginContainer/HBoxContainer/Control"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+offset_left = -520.0
+offset_top = 173.0
+offset_right = -220.0
+offset_bottom = 373.0
+max_value = 50.0
+value = 25.0
+script = ExtResource("2_5xyvr")
+
+[node name="BrightnessLabel" type="Label" parent="Main_Menu/MarginContainer/HBoxContainer/Control"]
+layout_mode = 0
+offset_left = -555.0
+offset_top = 178.0
+offset_right = -179.0
+offset_bottom = 257.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 24
+theme_override_fonts/font = SubResource("SystemFont_rtru1")
+theme_override_font_sizes/font_size = 46
+text = "Brightness"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="Button" parent="Main_Menu/MarginContainer/HBoxContainer/Control"]
+layout_mode = 0
+offset_left = 469.0
+offset_top = 582.0
+offset_right = 567.0
+offset_bottom = 626.0
+theme_override_fonts/font = SubResource("SystemFont_sfrg8")
+text = "Back
+"
+
+[connection signal="value_changed" from="Main_Menu/MarginContainer/HBoxContainer/Control/BrightnessHSlider" to="Main_Menu/MarginContainer/HBoxContainer/Control/BrightnessHSlider" method="_on_value_changed"]
+[connection signal="pressed" from="Main_Menu/MarginContainer/HBoxContainer/Control/BackButton" to="Main_Menu/MarginContainer/HBoxContainer/Control/BrightnessHSlider" method="_on_back_button_pressed"]

@@ -1,0 +1,129 @@
+[gd_scene load_steps=7 format=3 uid="uid://dj7dhos2m5de6"]
+
+[ext_resource type="Texture2D" uid="uid://b64g6hoextnxk" path="res://asteroid-Psyche.jpg" id="1_78yye"]
+[ext_resource type="Script" path="res://button_5.gd" id="2_ma2tj"]
+
+[sub_resource type="SystemFont" id="SystemFont_rtru1"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="SystemFont" id="SystemFont_0v1sy"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="SystemFont" id="SystemFont_2vw2k"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="SystemFont" id="SystemFont_4um2g"]
+font_names = PackedStringArray("Impact")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Main_Menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Main_Menu"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 1.0
+offset_right = 2872.0
+offset_bottom = 1613.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_78yye")
+
+[node name="MarginContainer" type="MarginContainer" parent="Main_Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 4.0
+offset_right = 1149.0
+offset_bottom = 643.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main_Menu/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Seperator" type="Control" parent="Main_Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Main_Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 24
+theme_override_fonts/font = SubResource("SystemFont_rtru1")
+theme_override_font_sizes/font_size = 64
+text = "Main Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main_Menu/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main_Menu/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="Seperator2" type="Control" parent="Main_Menu/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Main_Menu/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 32)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_0v1sy")
+text = "Start
+"
+
+[node name="Seperator3" type="Control" parent="Main_Menu/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="Main_Menu/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_2vw2k")
+text = "Tutorial
+"
+
+[node name="Seperator4" type="Control" parent="Main_Menu/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button4" type="Button" parent="Main_Menu/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_4um2g")
+text = "Settings
+
+"
+
+[node name="Seperator5" type="Control" parent="Main_Menu/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="Main_Menu/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_4um2g")
+text = "Credits
+"
+
+[node name="Seperator6" type="Control" parent="Main_Menu/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button5" type="Button" parent="Main_Menu/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_4um2g")
+text = "Exit
+"
+script = ExtResource("2_ma2tj")
+
+[connection signal="pressed" from="Main_Menu/MarginContainer/HBoxContainer/VBoxContainer/Button" to="Main_Menu/MarginContainer/HBoxContainer/VBoxContainer/Button5" method="_on_button_pressed"]
+[connection signal="pressed" from="Main_Menu/MarginContainer/HBoxContainer/VBoxContainer/Button4" to="Main_Menu/MarginContainer/HBoxContainer/VBoxContainer/Button5" method="_on_button_4_pressed"]
+[connection signal="pressed" from="Main_Menu/MarginContainer/HBoxContainer/VBoxContainer/Button5" to="Main_Menu/MarginContainer/HBoxContainer/VBoxContainer/Button5" method="_on_pressed"]

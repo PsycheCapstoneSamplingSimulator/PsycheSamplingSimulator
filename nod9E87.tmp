@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=4 uid="uid://c26xhctjudfx3"]
+[gd_scene load_steps=102 format=4 uid="uid://c26xhctjudfx3"]
 
 [ext_resource type="Script" path="res://reset_craft_position.gd" id="3_62cp6"]
 [ext_resource type="Shader" uid="uid://dehrwddxl84bk" path="res://gravel/shader.tres" id="3_n7313"]
@@ -9,7 +9,7 @@
 [ext_resource type="Environment" path="res://sky.tres" id="5_igj5y"]
 [ext_resource type="Script" path="res://main_camera.gd" id="7_3tgr3"]
 [ext_resource type="Script" path="res://craft.gd" id="8_pjruu"]
-[ext_resource type="PackedScene" uid="uid://ciahe0ut7kmsp" path="res://pause_menu.tscn" id="10_ovqyu"]
+[ext_resource type="Script" path="res://pause_menu_canvas_layer.gd" id="10_10du5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6vt4w"]
 render_priority = 0
@@ -1285,6 +1285,9 @@ size = Vector3(6.30432, 4.41333, 8.29712)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ujv18"]
 
+[sub_resource type="SystemFont" id="SystemFont_ndq0y"]
+font_names = PackedStringArray("Impact")
+
 [node name="Node3D" type="Node3D"]
 
 [node name="MeshGen" type="MeshInstance3D" parent="."]
@@ -1799,9 +1802,31 @@ shape = SubResource("BoxShape3D_6rgxu")
 transform = Transform3D(0.996718, -0.080947, 0, 0.080947, 0.996718, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_ujv18")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="PauseMenuCanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("10_10du5")
 
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("10_ovqyu")]
+[node name="Control" type="Control" parent="PauseMenuCanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 225.0
+offset_top = 91.0
+offset_right = 916.0
+offset_bottom = 431.0
+
+[node name="ResumeLabel" type="Button" parent="PauseMenuCanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.149
+anchor_top = 0.229
+anchor_right = 0.149
+anchor_bottom = 0.229
+offset_left = 0.0410004
+offset_top = 0.139992
+offset_right = 62.041
+offset_bottom = 50.14
+theme_override_fonts/font = SubResource("SystemFont_ndq0y")
+text = "Resume
+"
 
 [connection signal="button_down" from="DebugMenu/TabContainer/General/Layout/Debug View" to="Debug Camera" method="handleStateChange"]
 [connection signal="pressed" from="DebugMenu/TabContainer/Craft/Layout/Reset Craft Position" to="DebugMenu/TabContainer/Craft/Layout/Reset Craft Position" method="_on_pressed"]
