@@ -32,7 +32,7 @@ func _process(delta: float) -> void:
 	#Testing
 	var velocityChange = (previousVelocity - linear_velocity).length()
 	
-	if velocityChange > velocityChangeThreshold:
+	if (velocityChange > velocityChangeThreshold) && (controlsEnabled == true):
 		print("You crashed! The mission will close in 10 seconds.")
 		controlsEnabled = false
 		crashTimer = crashTimeout
