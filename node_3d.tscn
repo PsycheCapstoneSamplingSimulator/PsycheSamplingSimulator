@@ -9,7 +9,7 @@
 [ext_resource type="Environment" path="res://sky.tres" id="5_igj5y"]
 [ext_resource type="Script" path="res://main_camera.gd" id="7_3tgr3"]
 [ext_resource type="Script" path="res://craft.gd" id="8_pjruu"]
-[ext_resource type="PackedScene" uid="uid://ciahe0ut7kmsp" path="res://pause_menu.tscn" id="10_ovqyu"]
+[ext_resource type="PackedScene" uid="uid://ciahe0ut7kmsp" path="res://pause_menu.tscn" id="10_b2005"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6vt4w"]
 render_priority = 0
@@ -1443,7 +1443,6 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_u5a5i")
 
 [node name="Alignment" type="PanelContainer" parent="."]
-visible = false
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -1564,7 +1563,6 @@ max_zoom = 40.0
 target_node = NodePath("../Craft")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-visible = false
 mesh = SubResource("PlaneMesh_7144b")
 
 [node name="TestBall" type="RigidBody3D" parent="."]
@@ -1801,7 +1799,7 @@ mesh = SubResource("BoxMesh_ujv18")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("10_ovqyu")]
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("10_b2005")]
 
 [connection signal="button_down" from="DebugMenu/TabContainer/General/Layout/Debug View" to="Debug Camera" method="handleStateChange"]
 [connection signal="pressed" from="DebugMenu/TabContainer/Craft/Layout/Reset Craft Position" to="DebugMenu/TabContainer/Craft/Layout/Reset Craft Position" method="_on_pressed"]
